@@ -1,0 +1,23 @@
+a {font-size: 120px;
+    font-weight: bolder;
+    font-style: normal;
+    color:#ad953e}
+.test {position: absolute;
+        top:30px;
+        left:0px;}
+.buttn {background-color: #ad953e;
+border: none;
+color: black;
+padding: 20px 50px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 9px 5px;
+cursor: pointer;
+font-weight: bolder}
+body {background-color: black}
+.buttn:hover {
+    background-color: #1793d6; /* Green */
+    color: white;
+}

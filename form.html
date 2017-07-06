@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <title> Admission for 2017 </title>
+    <script type="text/javascript">
+      <!--
+      function parseDate()
+      {
+        var current = new Date();
+        var newDate = document.getElementById('dat').value;
+        var dat = newDate.split('-');
+        var diff = current.getFullYear() - dat[0] ;
+        if(diff > 15)
+        {
+          window.alert("Too old to enroll in school");
+        }
+        if(diff < 5)
+        {
+          window.alert("Too young to enroll in school");
+        }
+        document.getElementById("age").value = diff;
+
+      }
+
+
+      // -->
+    </script>
+
+
+    <!-- Remember to use CSS on everything -->
+    <style type="text/css">
+    a {font-size: 120px;
+        font-weight: bolder;
+        font-style: normal;
+        color:#ad953e}
+    .test {position: relative;
+            top:30px;
+            left:0px;}
+    .buttn {background-color: #ad953e;
+    border: none;
+    color: black;
+    padding: 20px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 9px 5px;
+    cursor: pointer;
+    font-weight: bolder}
+    body {background-color: black}
+    label {font-weight: bold;
+            color : #ad953e;
+
+  }
+    input {text-align: center;
+}
+    div {text-align:center;
+      }
+    .buttn:hover {
+              background-color: #1793d6; /* Green */
+              color: white;
+          }
+  </style>
+
+  </head>
+  <body>
+    <center><a href='home.html'>ABC INTERNATIONAL SCHOOL</a></center>
+    <center><img class="test" src="Picture_of_Reading_School.jpg" alt='school photo' width=1700px> </img></center></br></br></br>
+    <div>
+      <form method="post" action="form.php">
+      <label> First Name : <input name="FName" type="text" required/> </label><br/><br/>
+      <label> Last Name : <input name="LName" type="text" required/> </label><br/><br/>
+      <label> Blood Type : <input name="btype" type="text" required/> </label><br/><br/>
+      <label> Date of Birth : <input name="dob" id="dat" type="date" required/> </label><br/><br/>
+      <label> Age : <input name="Age" onclick="parseDate()" id="age" type="number" required/> </label><br/><br/>
+      <label> Grade : <select name="grade" >
+      <option>10</option>
+      <option>9</option>
+      <option>8</option>
+      <option>7</option>
+      <option>6</option>
+      <option>5</option>
+      <option>4</option>
+      <option>3</option>
+      <option>2</option>
+      <option>1</option>
+    </select>
+      </label><br/><br/>
+      <input class="buttn" type="submit" value="Submit Application"/>
+
+
+    </form></div>
+    <!-- <p><a href = "http://www.google.com"> This is a google hyperlink </a></p>
+    <p><a href = "mailto:smaran.mr@gmail.com">smaran.mr@gmail.com</a></p> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <strong>&copy;ABCIS All rights reserved</strong>
+    </ul>
+  </body>
+</html>
+<?php
+		define('DB_NAME','studentinfo');
+		define('DB_USER','root');
+		define('DB_PASSWORD','');
+		define('DB_HOST','localhost');
+	
+
+
+// Create connection
+		$con = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+/*$conn = new mysqli($servername, $username, $password,$dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} */
+		if($con)
+		{
+		echo("Connected successfully");
+		}
+		
+		
+		$Fname = $_POST['FName'];
+		$Lname = $_POST['LName'];
+		$Btype = $_POST['btype'];
+		$dob = $_POST['dob'];
+		$age = $_POST['Age'];
+		$grade = $_POST['grade'];
+		
+		$sql = "INSERT INTO name('First Name','Last Name','Blood Type','Date Of Birth','Age','Grade') VALUES ('$Fname','$Lname','$Btype','$dob','$age','$grade')" ;
+		$r = mysqli_query($con,$sql);
+		
+		echo("SUCCESS");
+		
+		
+		
+		mysqli_close($con);
+?>
+
